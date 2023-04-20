@@ -2,14 +2,15 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MaskTintPBR01
   m_Shader: {fileID: 4800000, guid: 2dda11899d49e3a4a97f81b8250369e8, type: 3}
-  m_ShaderKeywords: 
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -47,20 +48,21 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
-    - _Color01Power: 2.5
-    - _Color02Power: 2.5
-    - _Color03Power: 2.5
-    - _Color04Power: 2.5
-    - _Color05Power: 2.5
-    - _Color06Power: 2.5
-    - _Color07Power: 2.5
-    - _Color08Power: 2.5
+    - _Color01Power: 6
+    - _Color02Power: 6
+    - _Color03Power: 6
+    - _Color04Power: 6
+    - _Color05Power: 6
+    - _Color06Power: 6
+    - _Color07Power: 6
+    - _Color08Power: 6
     - _Metallic: 0.35
     - _Smoothness: 0
     - __dirty: 1
     m_Colors:
-    - _Color01: {r: 1, g: 0.66279554, b: 0, a: 0}
+    - _Color01: {r: 0.9989959, g: 1, b: 0, a: 0}
     - _Color02: {r: 0.45162567, g: 0.30113026, b: 0.9528302, a: 0}
     - _Color03: {r: 0.31706855, g: 0.4716981, b: 0, a: 0}
     - _Color04: {r: 0.43870044, g: 0.5283019, b: 0.11213957, a: 0}
@@ -68,3 +70,4 @@ Material:
     - _Color06: {r: 0.53775966, g: 0.5660378, b: 0.07208972, a: 0}
     - _Color07: {r: 0.7169812, g: 0.35370097, b: 0.01690993, a: 0}
     - _Color08: {r: 0.36030072, g: 0.5943396, b: 0.08130119, a: 0}
+  m_BuildTextureStacks: []
