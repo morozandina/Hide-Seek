@@ -16401,7 +16401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1ac56228078412798e92969515de12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4
   swipeThreshold: 50
   holdTimeThreshold: 0.5
 --- !u!136 &1294439148
@@ -16433,7 +16433,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &1297051067
 GameObject:
   m_ObjectHideFlags: 0
