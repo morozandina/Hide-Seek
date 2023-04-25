@@ -14,7 +14,9 @@ namespace Character.Movement
         [Header("Character's components")]
         public Animator characterAnimator;
         public Rigidbody characterRigidbody;
-        
+        [Header("Foot step particle")]
+        public ParticleSystem[] step;
+
         // Animation key
         private static readonly int Speed = Animator.StringToHash("Speed");
         
@@ -92,6 +94,11 @@ namespace Character.Movement
             
             characterRigidbody.MovePosition(characterRigidbody.position + moveSpeed);
             characterRigidbody.MoveRotation(Quaternion.Euler(0, angle, 0));
+        }
+
+        public void FootStepEvent(int witchFoot)
+        {
+            step[witchFoot].Play();
         }
     }
 }
