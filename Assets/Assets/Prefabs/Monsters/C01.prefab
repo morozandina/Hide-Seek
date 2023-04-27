@@ -13177,6 +13177,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 526221133827333066, guid: 750d18d87d8fe4d50a12257f6c29b9df, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526221133827333066, guid: 750d18d87d8fe4d50a12257f6c29b9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27f10dfb7930e46329792b880a0d15d1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 750d18d87d8fe4d50a12257f6c29b9df, type: 3}
 --- !u!4 &1414501813 stripped
