@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3725555652409831917}
   - component: {fileID: 3725555652409831907}
   - component: {fileID: 3725555652409831916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -4832,7 +4832,7 @@ GameObject:
   - component: {fileID: 3725555653825286669}
   - component: {fileID: 3725555653825286670}
   - component: {fileID: 3725555653825286671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4883,7 +4883,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a4ced0d460d2dbb45ad48235a1d89a86, type: 2}
+  - {fileID: 2100000, guid: 689dfbc9b1c564d69aa89b3e668bde9f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
