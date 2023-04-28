@@ -24861,46 +24861,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trails Procedure
       objectReference: {fileID: 0}
-    - target: {fileID: 1914218228882207168, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: trailAlpha
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: trailCount
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: colorTrail.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: colorTrail.g
-      value: 244.95686
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: colorTrail.r
-      value: 766.9961
-      objectReference: {fileID: 0}
     - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
       propertyPath: gameObjTarget
       value: 
       objectReference: {fileID: 781259325}
-    - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: game_obj_target
-      value: 
-      objectReference: {fileID: 781259325}
-    - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: trailIntervalTime
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914218228882207169, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
-      propertyPath: trailDisappearSpeed
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1914218228882207174, guid: 45d010faab806624ab4cc7f4f14950c1, type: 3}
       propertyPath: m_RootOrder
       value: 1

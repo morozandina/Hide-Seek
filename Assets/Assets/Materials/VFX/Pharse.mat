@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shield
+  m_Name: Pharse
   m_Shader: {fileID: -6465566751694194690, guid: 827ed18e1c8f046cf932ccfd107a3ac6, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -37,7 +37,7 @@ Material:
     - _Cell_density: 10
     - _Cloud_Brightness: 7
     - _Cloud_Power: 4
-    - _Distortion_Speed: 0
+    - _Distortion_Speed: 0.1
     - _Edge_Offset: 0
     - _Fresnel_Power: 0.15
     - _Index_Of_Refraction: 0.06
@@ -48,9 +48,9 @@ Material:
     - _Cloud_Direction: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Cloud_Tiling: {r: 0.2, g: 0.2, b: 0, a: 0}
     - _Color: {r: 1.6627451, g: 0.76862746, b: 0, a: 1}
-    - _Distortion_Direction: {r: 0, g: 0, b: 0, a: 0}
+    - _Distortion_Direction: {r: 0, g: 0.1, b: 0, a: 0}
     - _Distortion_Speed: {r: 1, g: 1, b: 0, a: 0}
-    - _Distortion_Tile: {r: 0, g: 0, b: 0, a: 0}
+    - _Distortion_Tile: {r: 4, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5368750425827623781
 MonoBehaviour:

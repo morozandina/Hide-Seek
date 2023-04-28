@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1914218228882207174
 Transform:
   m_ObjectHideFlags: 0
@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167fdee1d371ce14398ef887c8aa1cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game_obj_target: {fileID: 0}
-  trail_count: 20
-  trail_alpha: 0.33
-  trail_interval_time: 0.09
-  trail_disappear_speed: 6
-  color_trail: {r: 1015.9686, g: 305.19217, b: 12.047059, a: 0}
+  gameObjTarget: {fileID: 0}
+  trailCount: 20
+  trailAlpha: 0.33
+  trailIntervalTime: 0.09
+  trailDisappearSpeed: 6
+  colorTrail: {r: 766.9961, g: 244.95686, b: 0, a: 0}
