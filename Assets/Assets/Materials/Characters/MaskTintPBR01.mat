@@ -34,23 +34,23 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - MADS:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c4d2428381fc2df4a8aa0213fe037e36, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Mask03:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b7b14be0683c80445b1f946cea03347f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_48F7EBCA:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d88d9cab657618c49896d3871e617148, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_55FDBEBE:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c4d2428381fc2df4a8aa0213fe037e36, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_811EFFB:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cd9544cf101c07f49bb658ed14e298dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo:
@@ -99,11 +99,11 @@ Material:
     - Color08Power: 1
     - Vector1_147A751B: 1
     - Vector1_28C8683: 1
-    - Vector1_6AEDE23: 1
-    - Vector1_D15D16DF: 1
+    - Vector1_6AEDE23: 0.96
+    - Vector1_D15D16DF: 0.91
     - Vector1_D682A6C5: 1
     - Vector1_E784DED5: 1
-    - Vector1_F1794ABA: 1
+    - Vector1_F1794ABA: 4
     - _Color01Power: 6
     - _Color02Power: 6
     - _Color03Power: 6
@@ -118,14 +118,14 @@ Material:
     - _Smoothness: 0
     - __dirty: 1
     m_Colors:
-    - Color07: {r: 1, g: 0.48037398, b: 0, a: 0}
-    - Color08: {r: 0.5660378, g: 0.27248606, b: 0.045389816, a: 0}
+    - Color07: {r: 0.9622642, g: 0.9221828, b: 0.013616921, a: 1}
+    - Color08: {r: 1, g: 0.80482066, b: 0, a: 1}
     - Color_22DC93C2: {r: 0.15641686, g: 0.26963726, b: 0.8962264, a: 1}
     - Color_31457282: {r: 0.14414936, g: 0.5566037, b: 0, a: 1}
     - Color_593132F8: {r: 0.33606866, g: 0.15445885, b: 0.8396226, a: 0}
     - Color_B672769A: {r: 1, g: 0.6531649, b: 0, a: 0}
     - Color_C5D962E7: {r: 0.7454535, g: 0.18792266, b: 0.9716981, a: 0}
-    - Color_E64BA0E: {r: 1, g: 0, b: 0.009498596, a: 0}
+    - Color_E64BA0E: {r: 0, g: 1, b: 0.32866907, a: 0}
     - _Color01: {r: 0.9989959, g: 1, b: 0, a: 0}
     - _Color02: {r: 0.45162567, g: 0.30113026, b: 0.9528302, a: 0}
     - _Color03: {r: 0.31706855, g: 0.4716981, b: 0, a: 0}

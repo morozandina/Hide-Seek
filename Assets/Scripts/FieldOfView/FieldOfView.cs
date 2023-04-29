@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Character;
 using UnityEngine;
 
 namespace FieldOfView
@@ -12,6 +13,7 @@ namespace FieldOfView
 
 		public LayerMask targetMask;
 		public LayerMask obstacleMask;
+		public LayerMask whenYouSeek;
 
 		[HideInInspector]
 		public List<Transform> visibleTargets = new List<Transform>();
@@ -63,7 +65,12 @@ namespace FieldOfView
 				
 				var dstToTarget = Vector3.Distance (transform.position, target.position);
 				if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+				{
 					visibleTargets.Add(target);
+					GameManager.shakeCamera?.Invoke();
+					SetLayerAllChildren(target.transform.root, Mathf.RoundToInt(Mathf.Log(whenYouSeek.value, 2)));
+					target.GetComponent<Hide>().Caught();
+				}
 			}
 		}
 
@@ -184,5 +191,13 @@ namespace FieldOfView
 			}
 		}
 
+		private static void SetLayerAllChildren(Component root, int layer)
+		{
+			var children = root.GetComponentsInChildren<Transform>(includeInactive: true);
+			foreach (var child in children)
+			{
+				child.gameObject.layer = layer;
+			}
+		}
 	}
 }

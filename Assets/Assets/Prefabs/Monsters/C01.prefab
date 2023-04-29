@@ -11445,9 +11445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8751161469425723191}
   - component: {fileID: 3427927787343281485}
-  - component: {fileID: 784946773}
-  - component: {fileID: 784946772}
-  - component: {fileID: 784946776}
+  - component: {fileID: 838343156}
   m_Layer: 7
   m_Name: C01
   m_TagString: Untagged
@@ -11491,7 +11489,7 @@ Animator:
   m_GameObject: {fileID: 8230766273605467533}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2b7c51804aef3f445999af66e5132162, type: 3}
-  m_Controller: {fileID: 9100000, guid: 578beec48475d4f8b9c2c7c3bd3b5014, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8403c4fb9b29943cc8a29944e3d8fdbc, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -11502,37 +11500,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &784946773
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8230766273605467533}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.5
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!136 &784946772
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8230766273605467533}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.75, z: 0}
---- !u!114 &784946776
+--- !u!114 &838343156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11541,14 +11509,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8230766273605467533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1ac56228078412798e92969515de12, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b6ce9308644d46799b7972ede44beb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  swipeThreshold: 50
-  holdTimeThreshold: 0.5
-  characterAnimator: {fileID: 3427927787343281485}
-  characterRigidbody: {fileID: 784946773}
   step:
   - {fileID: 3896743969625296080}
   - {fileID: 3896743970326046572}
@@ -13114,6 +13077,10 @@ PrefabInstance:
       propertyPath: targetMask.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 526221133174190801, guid: 750d18d87d8fe4d50a12257f6c29b9df, type: 3}
+      propertyPath: whenYouSeek.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 526221133827333064, guid: 750d18d87d8fe4d50a12257f6c29b9df, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -13194,7 +13161,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3983587044197835953, guid: 41407540dbc094e54a6023621cde4e9e, type: 3}
       propertyPath: m_Name
-      value: Pharse
+      value: Phrase
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983587044197835953, guid: 41407540dbc094e54a6023621cde4e9e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3983587044197835953, guid: 41407540dbc094e54a6023621cde4e9e, type: 3}
       propertyPath: m_IsActive

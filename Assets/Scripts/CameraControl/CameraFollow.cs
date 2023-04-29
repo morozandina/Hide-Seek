@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace CameraControl
 {
@@ -8,11 +9,12 @@ namespace CameraControl
         public float smoothSpeed = 0.125f;
         public Vector3 offsetCamera;
 
-        private Vector3 desiredPosition;
+        private Vector3 _desiredPosition;
+        
         private void FixedUpdate()
         {
-            desiredPosition = target.position + offsetCamera;
-            var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            _desiredPosition = target.position + offsetCamera;
+            var smoothedPosition = Vector3.Lerp(transform.position, _desiredPosition, smoothSpeed);
             transform.position = smoothedPosition; 
         }
     }
