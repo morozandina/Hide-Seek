@@ -1,74 +1,73 @@
 using System;
+using System.Collections.Generic;
 using Character.Movement;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 namespace Character
 {
     public class Seek : CharacterMovement
     {
-        private Vector2 _swipeStartPosition;
-        private float _holdStartTime;
-        private bool _isHolding = false;
-        private bool _isSwiping = false;
-        
-        [Header("Control's parameters")]
-        public float swipeThreshold = 50.0f;
-        public float holdTimeThreshold = 0.5f;
-        
-        public override void Update()
+        [Header("AI CONFIGURATION: ")]
+        public NavMeshAgent agent;
+        public Transform seekPoints;
+
+        private readonly List<Transform> _wayPoints = new List<Transform>();
+        private int _wayIndex;
+        private int _lastWayIndex;
+        private Vector3 _target;
+
+        private void Start()
         {
-            if (Input.touchCount <= 0) return;
-            
-            var touch = Input.GetTouch(0);
-            
-            switch (touch.phase)
+            if (isMine) return;
+
+            agent.enabled = true;
+            foreach (Transform child in seekPoints)
             {
-                case TouchPhase.Began:
-                    _swipeStartPosition = touch.position;
-                    _holdStartTime = Time.time;
-                    _isHolding = true;
-                    _isSwiping = false;
-                    break;
-                case TouchPhase.Moved when _isHolding:
-                {
-                    // Calculate the movement direction based on the swipe distance
-                    var swipeDirection = touch.position - _swipeStartPosition;
-                    if (swipeDirection.magnitude > swipeThreshold)
-                    {
-                        _isSwiping = true;
-                        movementDirection = new Vector3(swipeDirection.x, 0.0f, swipeDirection.y).normalized;
-                    }
-                    else
-                    {
-                        _isSwiping = false;
-                        movementDirection = Vector3.zero;
-                    }
-            
-                    break;
-                }
-                case TouchPhase.Ended:
-                {
-                    if (!_isSwiping && Time.time - _holdStartTime < holdTimeThreshold)
-                    {
-                        // Perform some action when the user taps instead of swiping
-                        Debug.Log("Tap!");
-                    }
-            
-                    // Reset the movement direction
-                    movementDirection = Vector3.zero;
-                    characterAnimator.SetFloat(Speed, 0);
-                    _isHolding = false;
-                    _isSwiping = false;
-                    break;
-                }
-                case TouchPhase.Stationary:
-                    break;
-                case TouchPhase.Canceled:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                _wayPoints.Add(child);
             }
+
+            UpdateDestination();
+            agent.updatePosition = true;
+        }
+
+        public override void ControlAi()
+        {
+
+            if (Vector3.Distance(transform.position, _target) < 1)
+            {
+                IterateWaypointIndex();
+                UpdateDestination();
+            }
+            
+            foreach (var x in agent.path.corners)
+            {
+                Debug.Log(x);
+            }
+            
+            // var heading = agent.nextPosition;
+            // var distance = heading.magnitude;
+            // var direction = heading / distance;
+            // MovementDirection = new Vector3(direction.x, 0.0f, direction.z).normalized;
+
+        }
+
+        private void UpdateDestination()
+        {
+            _target = _wayPoints[_wayIndex].position;
+            agent.SetDestination(_target);
+        }
+
+        private void IterateWaypointIndex()
+        {
+            while (_wayIndex == _lastWayIndex)
+            {
+                _wayIndex = Random.Range(0, _wayPoints.Count - 1);
+            }
+
+            _lastWayIndex = _wayIndex;
         }
     }
 }

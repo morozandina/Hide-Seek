@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198733207495284474}
   - component: {fileID: 199744793079097426}
   m_Layer: 0
-  m_Name: FX_Leaves_Blossom_01
+  m_Name: Leaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
