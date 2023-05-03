@@ -10,26 +10,21 @@ namespace Character
     {
         [Header("AI CONFIGURATION: ")]
         public Transform seekPoints;
+        public float nextWaypointDistance = 0.75f;
 
         private readonly List<Transform> _wayPoints = new List<Transform>();
         private int _targetIndex;
         private int _lastTargetIndex;
         private Vector3 _target;
 
-        public Seeker seeker;
-        
-        //The max distance from the AI to a waypoint for it to continue to the next waypoint
-        public float nextWaypointDistance = 3;
-        
-        //The calculated path
+        private Seeker _seeker;
         private Path _path;
-        
-        //The waypoint we are currently moving towards
         private int _currentWaypoint = 0;
         
         private void Start()
         {
             if (isMine) return;
+            _seeker = GetComponent<Seeker>();
             
             foreach (Transform child in seekPoints)
             {
@@ -42,7 +37,6 @@ namespace Character
 
         public override void ControlAi()
         {
-            // We have no path to move after yet
             if (_path == null) return;
 
             if (_currentWaypoint >= _path.vectorPath.Count)
@@ -52,12 +46,9 @@ namespace Character
                 return;
             }
             
-            //Direction to the next waypoint
             var dir = (_path.vectorPath[_currentWaypoint] - transform.position).normalized;
             MovementDirection = new Vector3(dir.x, 0, dir.z).normalized;
             
-            //Check if we are close enough to the next waypoint
-            //If we are, proceed to follow the next waypoint
             if (Vector3.Distance (transform.position,_path.vectorPath[_currentWaypoint]) < nextWaypointDistance)
                 _currentWaypoint++;
         }
@@ -65,7 +56,7 @@ namespace Character
         private void UpdateDestination()
         {
             _target = _wayPoints[_targetIndex].position;
-            seeker.StartPath (transform.position,_target, OnPathComplete);
+            _seeker.StartPath (transform.position,_target, OnPathComplete);
         }
 
         private void IterateWaypointIndex()
@@ -83,7 +74,6 @@ namespace Character
             if (p.error) return;
             
             _path = p;
-            //Reset the waypoint counter
             _currentWaypoint = 0;
         }
     }

@@ -69,7 +69,7 @@ namespace FieldOfView
 					visibleTargets.Add(target);
 					GameManager.shakeCamera?.Invoke();
 					SetLayerAllChildren(target.transform.root, Mathf.RoundToInt(Mathf.Log(whenYouSeek.value, 2)));
-					target.GetComponent<Hide>().Caught();
+					target.parent.GetComponent<Hide>().Caught();
 				}
 			}
 		}

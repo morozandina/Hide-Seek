@@ -15,6 +15,7 @@ namespace Character.Movement
         [Header("Character's components")]
         public Animator characterAnimator;
         public Rigidbody characterRigidbody;
+        public ParticleSystem starStunned;
         
         private Vector2 _swipeStartPosition;
         private float _holdStartTime;
@@ -23,6 +24,7 @@ namespace Character.Movement
 
         // Animation key
         protected static readonly int Speed = Animator.StringToHash("Speed");
+        protected static readonly int IsCaught = Animator.StringToHash("IsCaught");
         
         // Private var
         protected Vector3 MovementDirection = Vector3.zero;
@@ -42,11 +44,12 @@ namespace Character.Movement
             
             var moveSpeed = MovementDirection * speed * Time.deltaTime;
             var angle = Mathf.Atan2(MovementDirection.x, MovementDirection.z) * Mathf.Rad2Deg;
+            var desiredRot = Quaternion.Euler(0, angle, 0);
             
             characterAnimator.SetFloat(Speed, moveSpeed.magnitude);
             
             characterRigidbody.MovePosition(characterRigidbody.position + moveSpeed);
-            characterRigidbody.MoveRotation(Quaternion.Euler(0, angle, 0));
+            characterRigidbody.MoveRotation(Quaternion.Lerp(transform.rotation, desiredRot, Time.deltaTime * 20));
         }
 
         protected void ControlMine()
