@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Character.Movement;
+using Pathfinding;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace Character
@@ -18,59 +15,57 @@ namespace Character
         private int _targetIndex;
         private int _lastTargetIndex;
         private Vector3 _target;
-        
-        private Vector3[] _waypoints;
-        private Vector3 _waypoint;
-        private int _wayIndex = 0;
 
+        public Seeker seeker;
+        
+        //The max distance from the AI to a waypoint for it to continue to the next waypoint
+        public float nextWaypointDistance = 3;
+        
+        //The calculated path
+        private Path _path;
+        
+        //The waypoint we are currently moving towards
+        private int _currentWaypoint = 0;
+        
         private void Start()
         {
             if (isMine) return;
-
+            
             foreach (Transform child in seekPoints)
             {
                 _wayPoints.Add(child);
             }
 
+            IterateWaypointIndex();
             UpdateDestination();
         }
 
         public override void ControlAi()
         {
-            if (Vector3.Distance(transform.position, _target) < 1)
+            // We have no path to move after yet
+            if (_path == null) return;
+
+            if (_currentWaypoint >= _path.vectorPath.Count)
             {
                 IterateWaypointIndex();
                 UpdateDestination();
-            }
-
-            if (Vector3.Distance(transform.position, _waypoint) < 1)
-            {
-                UpdateWayPoint();
+                return;
             }
             
-            var direction = _waypoint - transform.position;
-            MovementDirection = new Vector3(direction.x, 0, direction.z).normalized;
-        }
-
-        private void UpdateWayPoint()
-        {
-            if (_wayIndex + 1 >= _waypoints.Length - 1)
-                _waypoint = _target;
-            else
-            {
-                _waypoint = _waypoints[_wayIndex];
-                _waypoint.y = transform.position.y;
-                _wayIndex++;
-            }
+            //Direction to the next waypoint
+            var dir = (_path.vectorPath[_currentWaypoint] - transform.position).normalized;
+            MovementDirection = new Vector3(dir.x, 0, dir.z).normalized;
+            
+            //Check if we are close enough to the next waypoint
+            //If we are, proceed to follow the next waypoint
+            if (Vector3.Distance (transform.position,_path.vectorPath[_currentWaypoint]) < nextWaypointDistance)
+                _currentWaypoint++;
         }
 
         private void UpdateDestination()
         {
             _target = _wayPoints[_targetIndex].position;
-            _wayIndex = 0;
-            var path = new NavMeshPath();
-            NavMesh.CalculatePath(transform.position, _target, NavMesh.AllAreas, path);
-            _waypoints = path.corners;
+            seeker.StartPath (transform.position,_target, OnPathComplete);
         }
 
         private void IterateWaypointIndex()
@@ -81,6 +76,15 @@ namespace Character
             }
 
             _lastTargetIndex = _targetIndex;
+        }
+        
+        private void OnPathComplete (Path p)
+        {
+            if (p.error) return;
+            
+            _path = p;
+            //Reset the waypoint counter
+            _currentWaypoint = 0;
         }
     }
 }

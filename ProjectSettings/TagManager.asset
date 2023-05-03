@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Through
   - LineOfSight
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Seeker
   - Heeder
   - HeederStop
-  - LineOfSight
+  - 
   - 
   - 
   - 
