@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Character.Movement;
 using Pathfinding;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Character
 {
@@ -16,7 +18,6 @@ namespace Character
         private readonly List<Transform> _wayPoints = new List<Transform>();
         private int _targetIndex;
         private int _lastTargetIndex;
-        private Vector3 _target;
 
         private Seeker _seeker;
         private Path _path;
@@ -34,7 +35,7 @@ namespace Character
                 _wayPoints.Add(child);
             }
 
-            UpdateDestination();
+            UpdateDestination(_wayPoints[Random.Range(0, _wayPoints.Count - 1)].position);
         }
 
         public override void ControlAi()
@@ -58,35 +59,34 @@ namespace Character
                 _currentWaypoint++;
         }
         
-        private void UpdateDestination()
+        private void UpdateDestination(Vector3 target)
         {
-            _target = _wayPoints[_targetIndex].position;
-            _seeker.StartPath (transform.position,_target, OnPathComplete);
+            _seeker.StartPath (transform.position,target, OnPathComplete);
         }
 
-        private void IterateWaypointIndex()
-        {
-            // TODO Write AI logic here
-            // while (_targetIndex == _lastTargetIndex)
-            // {
-            //     _targetIndex = Random.Range(0, _wayPoints.Count - 1);
-            // }
-            //
-            // _lastTargetIndex = _targetIndex;
-        }
-        
         private void OnPathComplete (Path p)
         {
             if (p.error) return;
             
             _path = p;
             _currentWaypoint = 0;
+            _isHide = false;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Seeker"))
-                Debug.Log(1);
+            // TODO Write AI logic here
+            if (!other.CompareTag("Seeker")) return;
+
+            foreach (var t in from t in _wayPoints
+                     let distance = Vector3.Distance(other.transform.position, t.position)
+                     let dotProduct = Vector3.Dot(other.transform.forward, (t.position - other.transform.position).normalized)
+                     where distance > 6 && dotProduct > 0
+                     select t)
+            {
+                UpdateDestination(t.position);
+                break;
+            }
         }
 
         public void Caught()
