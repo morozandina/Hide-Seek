@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Character.AI;
 using Character.Movement;
 using Pathfinding;
 using UnityEngine;
@@ -15,7 +16,9 @@ namespace Character
         public Transform hidePoints;
         public float nextWaypointDistance = 0.75f;
 
-        private readonly List<Transform> _wayPoints = new List<Transform>();
+        private List<Cover> _wayPoints = new List<Cover>();
+        private Cover _lastPoint;
+            
         private int _targetIndex;
         private int _lastTargetIndex;
 
@@ -29,13 +32,10 @@ namespace Character
         {
             if (isMine) return;
             _seeker = GetComponent<Seeker>();
-            
-            foreach (Transform child in hidePoints)
-            {
-                _wayPoints.Add(child);
-            }
 
-            UpdateDestination(_wayPoints[Random.Range(0, _wayPoints.Count - 1)].position);
+            _wayPoints = hidePoints.GetComponentsInChildren<Cover>().ToList();
+
+            UpdateDestination(_wayPoints.Where((x, i) => !x.isBusy).ToList().PickRandom());
         }
 
         public override void ControlAi()
@@ -59,9 +59,14 @@ namespace Character
                 _currentWaypoint++;
         }
         
-        private void UpdateDestination(Vector3 target)
+        private void UpdateDestination(Cover target)
         {
-            _seeker.StartPath (transform.position,target, OnPathComplete);
+            if (_lastPoint != null)
+                _lastPoint.isBusy = false;
+            
+            target.isBusy = true;
+            _seeker.StartPath (transform.position,target.Position, OnPathComplete);
+            _lastPoint = target;
         }
 
         private void OnPathComplete (Path p)
@@ -79,13 +84,14 @@ namespace Character
             if (!other.CompareTag("Seeker")) return;
 
             foreach (var t in from t in _wayPoints
-                     let distance = Vector3.Distance(other.transform.position, t.position)
-                     let dotProduct = Vector3.Dot(other.transform.forward, (t.position - other.transform.position).normalized)
-                     where distance > 6 && dotProduct > 0
+                     let distance = Vector3.Distance(other.transform.position, t.Position)
+                     let dotProduct =
+                         Vector3.Dot(other.transform.forward, (t.Position - other.transform.position).normalized)
+                     where distance > 6 && dotProduct > 0 && !t.isBusy
                      select t)
             {
-                UpdateDestination(t.position);
-                break;
+                    UpdateDestination(t);
+                    break;
             }
         }
 
@@ -95,6 +101,17 @@ namespace Character
             characterAnimator.SetBool(IsCaught, true);
             starStunned.gameObject.SetActive(true);
             starStunned.Play();
+        }
+    }
+    
+    public static class Extensions
+    {
+        private static System.Random rnd = new System.Random();
+ 
+        public static T PickRandom<T>(this IList<T> source)
+        {
+            var randIndex = rnd.Next(source.Count);
+            return source[randIndex];
         }
     }
 }

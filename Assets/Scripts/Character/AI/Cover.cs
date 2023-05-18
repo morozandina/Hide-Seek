@@ -6,7 +6,10 @@ namespace Character.AI
     public class Cover : MonoBehaviour
     {
         public bool isSeeker;
-        public bool isBusy;
+        [HideInInspector]
+        public bool isBusy = false;
+        public Vector3 Position => transform.position;
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = isSeeker ? Color.magenta : Color.cyan;
