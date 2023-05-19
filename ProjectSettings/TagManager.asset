@@ -8,6 +8,8 @@ TagManager:
   - LineOfSight
   - Ground
   - Seeker
+  - Hider
+  - Skill
   layers:
   - Default
   - TransparentFX

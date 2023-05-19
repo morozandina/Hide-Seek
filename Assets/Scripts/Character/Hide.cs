@@ -103,15 +103,4 @@ namespace Character
             starStunned.Play();
         }
     }
-    
-    public static class Extensions
-    {
-        private static System.Random rnd = new System.Random();
- 
-        public static T PickRandom<T>(this IList<T> source)
-        {
-            var randIndex = rnd.Next(source.Count);
-            return source[randIndex];
-        }
-    }
 }
